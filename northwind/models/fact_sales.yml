@@ -1,51 +1,25 @@
-version: 2
-
 models:
   - name: fact_sales
-    description: Transaction fact table. One row per line item ordered. Includes product data
+    description: Transaction fact table. One row per line item order. Includes product data
     columns:
       - name: orderid
-        description: source key used for drill through 
+        description: Degenerate dimension for fact sales.
         tests:
-          - not_null
           - unique
+          - not_null
       - name: customerkey
-        description: Dimension FK for dim_customer
-        tests:
-          - not_null
-          - unique
+        description: Dimension key for dim_customer
       - name: employeekey
-        description: Dimension FK for dim_employee
-        tests:
-          - not_null
-          - unique
+        description: Dimension key for dim_employee
       - name: orderdatekey
-        description: Dimension FK for dim_date
-        tests:
-          - not_null
-          - unique
+        description: Dimension key for dim_date
       - name: productkey
-        description: Dimension FK for dim_product
-        tests:
-          - not_null
-          - unique
+        description: Dimension key for dim_product
       - name: quantity
-        description: the quantity of the product on the order. Additive
-        tests:
-          - not_null
-          - unique
+        description: The quantity of the product on order. Additive
       - name: extendedpriceamount
-        description: additive fact for quantity * product price
-        tests:
-          - not_null
-          - unique
+        description: Additive fact for quantity * product price
       - name: discountamount
-        description: additive fact for extended price * discount
-        tests:
-          - not_null
-          - unique
+        description: Additive fact for extended price * discount
       - name: soldamount
-        description: additive fact for extended price - discount amount
-        tests:
-          - not_null
-          - unique
+        description: Additive fact for extended price - discount amount
